@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "MarketWatchQuotes": {
+      "commandName": "Project",
+      "commandLineArgs": "DJSASD"
+    }
+  }
+}
