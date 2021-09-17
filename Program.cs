@@ -22,7 +22,7 @@ namespace MarketWatchQuotes
             var result = await url.WithHeader("Dylan2010.EntitlementToken", entitlement).GetJsonAsync<ApiResponse>();
             var ohlcs = Zip(result.TimeInfo.Ticks, result.Series.Single().DataPoints);
 
-            using (var writer = new StreamWriter($"{symbol}.csv"))
+            using (var writer = new StreamWriter($"{string.Join("_", symbol.Split(Path.GetInvalidFileNameChars()))}.csv"))
             using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
             {
                 csv.WriteRecords(ohlcs.OrderBy(o => o.Date));
